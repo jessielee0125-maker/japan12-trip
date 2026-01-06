@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>埃及 12 天．尼羅河、紅海與黑白沙漠之旅</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f5f5f4; /* stone-100 */
+            color: #44403c; /* stone-700 */
+        }
+
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .tab-active {
+            border-bottom: 2px solid #4f46e5;
+            color: #4f46e5;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased selection:bg-indigo-100 selection:text-indigo-800">
+
+<!-- Top Nav: Japan / Egypt -->
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center">
+                <span class="text-xl font-bold text-indigo-900 tracking-wide flex items-center">
+                    <i class="fa-solid fa-globe-americas mr-2"></i>TRIP<span class="text-indigo-600">PLANNER</span>
+                </span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- 日本行程連結（這一頁是埃及，所以日本是未選取狀態） -->
+                <a href="index.html"
+                   class="px-3 py-1 rounded-full text-sm font-medium text-stone-600 border border-transparent hover:border-indigo-200 hover:text-indigo-700">
+                    日本行程
+                </a>
+                <!-- 埃及行程連結（本頁，採用實心樣式） -->
+                <a href="egypt.html"
+                   class="px-3 py-1 rounded-full text-sm font-medium bg-indigo-600 text-white shadow-sm">
+                    埃及行程
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<header class="bg-white border-b border-stone-200">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl font-bold text-stone-900 mb-4">
+            埃及 12 天．尼羅河、紅海與黑白沙漠之旅
+        </h1>
+        <p class="text-lg text-stone-600 max-w-3xl mx-auto leading-relaxed">
+            開羅博物館、吉薩金字塔、尼羅河遊輪、紅海度假與黑白沙漠星空，一次收集古文明與自然景觀。
+            <br>
+            <span class="text-indigo-600 font-semibold text-base mt-2 block">
+                核心理念：深入文化、節奏穩定、兼顧景點與休息
+            </span>
+        </p>
+        <div class="mt-8 flex justify-center gap-4 flex-wrap">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-800">
+                <i class="fa-solid fa-pyramid mr-2"></i>金字塔 & 王陵
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-sky-100 text-sky-800">
+                <i class="fa-solid fa-water mr-2"></i>尼羅河遊輪
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800">
+                <i class="fa-solid fa-umbrella-beach mr-2"></i>紅海度假
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-stone-800 text-stone-100">
+                <i class="fa-solid fa-star mr-2"></i>黑白沙漠星空
+            </span>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+    <!-- Section 1：行程總覽 -->
+    <section id="itinerary" class="scroll-mt-24">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-stone-900 flex items-center">
+                <i class="fa-solid fa-calendar-days mr-3 text-indigo-600"></i>12 天行程總覽
+            </h2>
+            <p class="mt-2 text-stone-600 leading-relaxed">
+                這一段行程以「文化理解 + 節奏穩定」為主軸：前段城市與紅海調時差，中段尼羅河遊輪深入古文明，
+                最後以沙漠與市集收尾。下方卡片為簡要版，可供你在日本行程網頁上做超連結或對照。
+            </p>
+        </div>
+
+        <!-- Day selector -->
+        <div class="relative mb-6">
+            <div class="flex space-x-3 overflow-x-auto pb-3 hide-scroll" id="day-selector">
+                <!-- 由 JS 產生 -->
+            </div>
+        </div>
+
+        <!-- Day detail -->
+        <div id="day-detail-container"></div>
+    </section>
+
+    <!-- Section 2：經典景點導覽 -->
+    <section id="highlights" class="scroll-mt-24">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-stone-900 flex items-center">
+                <i class="fa-solid fa-landmark mr-3 text-indigo-600"></i>古埃及經典景點導覽
+            </h2>
+            <p class="mt-2 text-stone-600 leading-relaxed">
+                下列景點幾乎涵蓋本團會造訪的主要古蹟。建議可在出發前，挑幾個自己最感興趣的主題，
+                旅途中就能更有「目的地感」，不會只是拍照打卡。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 吉薩金字塔 -->
+            <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
+                <h3 class="text-xl font-bold text-stone-900 mb-2">
+                    <i class="fa-solid fa-pyramid mr-2 text-amber-500"></i>吉薩金字塔群 & 獅身人面像
+                </h3>
+                <p class="text-sm text-stone-600 mb-3">
+                    世界古代七大奇蹟中唯一仍屹立至今的建築群。胡夫、卡夫拉、孟卡拉三座金字塔
+                    連同獅身人面像，構成完整的王陵與守護者象徵。
+                </p>
+                <ul class="text-sm text-stone-600 space-y-1">
+                    <li>・<span class="font-medium">亮點：</span>金字塔幾乎精準對準東西南北，原本外覆白色石灰岩，陽光下會反光發亮。</li>
+                    <li>・<span class="font-medium">拍照建議：</span>可在全景觀景台拍「三金字塔合照」，也可在獅身人面像前拍「親吻」趣味照。</li>
+                    <li>・<span class="font-medium">體驗：</span>如身體狀況許可，可考慮付費短程騎駱駝或進入金字塔內部參觀。</li>
+                </ul>
+            </article>
+
+            <!-- 卡納克 + 路克索 -->
+            <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
+                <h3 class="text-xl font-bold text-stone-900 mb-2">
+                    <i class="fa-solid fa-torii-gate mr-2 text-indigo-500"></i>卡納克神殿與路克索神殿
+                </h3>
+                <p class="text-sm text-stone-600 mb-3">
+                    兩座神殿位於路克索東岸，是古底比斯城的宗教中心，主供阿蒙神與底比斯三神。
+                    前者像是「諸神的總部」，後者則是王權儀式舞台。
+                </p>
+                <ul class="text-sm text-stone-600 space-y-1">
+                    <li>・卡納克神殿巨柱廳共有 134 根立柱，高約 20 多公尺，走在其中好像被石頭森林包圍。</li>
+                    <li>・路克索神殿入口原本有兩支方尖碑，另一支現今立在巴黎協和廣場。</li>
+                    <li>・若行程安排夜訪路克索神殿，打光後的石柱與方尖碑非常適合慢慢散步。</li>
+                </ul>
+            </article>
+
+            <!-- 帝王谷 + 女王神殿 -->
+            <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
+                <h3 class="text-xl font-bold text-stone-900 mb-2">
+                    <i class="fa-solid fa-crown mr-2 text-emerald-600"></i>帝王谷與哈特謝普蘇女王神殿
+                </h3>
+                <p class="text-sm text-stone-600 mb-3">
+                    帝王谷是新王國時期眾多法老的地下陵墓群，改採岩穴墓形式以避開盜墓。
+                    女王神殿則貼山築成三層平台，是古埃及極具代表性的幾何建築。
+                </p>
+                <ul class="text-sm text-stone-600 space-y-1">
+                    <li>・墓室內壁畫色彩依然飽和，描述法老穿越冥界、追求永生的旅程。</li>
+                    <li>・哈特謝普蘇是少數以「法老」身分統治埃及的女性，雕像中常以男性形象出現。</li>
+                    <li>・部分墓室須另購特別門票，可事先挑選自己最想看的幾座。</li>
+                </ul>
+            </article>
+
+            <!-- 荷魯斯、柯孟波、菲萊 -->
+            <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
+                <h3 class="text-xl font-bold text-stone-900 mb-2">
+                    <i class="fa-solid fa-feather-pointed mr-2 text-rose-500"></i>尼羅河沿岸神殿：荷魯斯、柯孟波與菲萊
+                </h3>
+                <p class="text-sm text-stone-600 mb-3">
+                    尼羅河遊輪段沿途會拜訪多座風格不同的神殿，是理解古埃及信仰與神話的最佳機會。
+                </p>
+                <ul class="text-sm text-stone-600 space-y-1">
+                    <li>・艾德芙荷魯斯神殿保存完整，鷹頭神象徵王權與天空，是許多人最喜歡的一座神殿。</li>
+                    <li>・柯孟波神殿左右對稱，一側奉鱷魚神蘇貝克、一側奉荷魯斯，並展出大量鱷魚木乃伊。</li>
+                    <li>・菲萊神殿奉祀女神伊西斯，整座神殿曾因水壩建設而被切割搬遷，被稱為「尼羅河上的珍珠」。</li>
+                </ul>
+            </article>
+
+            <!-- 阿布辛貝 -->
+            <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
+                <h3 class="text-xl font-bold text-stone-900 mb-2">
+                    <i class="fa-solid fa-person-rays mr-2 text-yellow-500"></i>阿布辛貝大神殿與小神殿
+                </h3>
+                <p class="text-sm text-stone-600 mb-3">
+                    由拉美西斯二世為自己與王后娜芙蒂莉建造的岩壁神殿，四尊巨型坐像是埃及名片之一。
+                    神殿原本位於較低處，因興建高壩而整體切割搬遷，是世界文化資產保護的經典案例。
+                </p>
+                <ul class="text-sm text-stone-600 space-y-1">
+                    <li>・每年特定日子，陽光會直射到神殿內部神像上，是古人精準計算出的設計。</li>
+                    <li>・此行通常需要清晨出發，建議前一晚早睡、並準備保暖外套與頸枕。</li>
+                </ul>
+            </article>
+
+            <!-- 黑白沙漠 -->
+            <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
+                <h3 class="text-xl font-bold text-stone-900 mb-2">
+                    <i class="fa-solid fa-mountain-sun mr-2 text-stone-600"></i>黑白沙漠與星空露營
+                </h3>
+                <p class="text-sm text-stone-600 mb-3">
+                    西部沙漠的黑沙漠與白沙漠展現截然不同的地形風貌——一邊是火山岩黑丘陵，
+                    一邊是石灰岩風蝕出的白色「蘑菇」奇岩，是行程中最超現實的一段景色。
+                </p>
+                <ul class="text-sm text-stone-600 space-y-1">
+                    <li>・夜晚幾乎沒有光害，可清楚看到滿天星斗與銀河。</li>
+                    <li>・早晚溫差大，需備厚外套、脖圍與帽子，並留意保暖與防風。</li>
+                    <li>・營地條件較簡單，視為「體驗型」景點而非飯店等級，有心理準備就更能享受。 </li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- Section 3：文化小百科 -->
+    <section id="culture" class="scroll-mt-24">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-stone-900 flex items-center">
+                <i class="fa-solid fa-book-open mr-3 text-indigo-600"></i>古埃及文化小百科
+            </h2>
+            <p class="mt-2 text-stone-600 leading-relaxed">
+                這一區可以當成「行前閱讀」，搭機或車程中看一看，抵達景點時就會多一層「原來如此」的熟悉感。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- 尼羅河 -->
+            <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
+                <h3 class="text-lg font-bold text-stone-900 mb-2">尼羅河：生命之河</h3>
+                <p class="text-sm text-stone-600">
+                    古埃及文明幾乎完全依賴尼羅河的年度氾濫，帶來肥沃黑土，因此常被稱為
+                    「埃及是尼羅河的贈禮」。在路克索一帶，「東岸生活、西岸永生」的空間概念，
+                    也建立在太陽從東升起、西方落下的想像上。
+                </p>
+            </article>
+
+            <!-- 文字與羅塞塔石碑 -->
+            <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
+                <h3 class="text-lg font-bold text-stone-900 mb-2">象形文字與羅塞塔石碑</h3>
+                <p class="text-sm text-stone-600">
+                    神殿與墓室牆上的刻文屬「聖書體」（象形文字），主要用於宗教與紀念碑；
+                    日常文書則採更簡化的僧侶體、世俗體。羅塞塔石碑同時刻有三種文字，
+                    讓十九世紀學者成功破譯象形文字，也讓我們得以讀懂牆上的故事。
+                </p>
+            </article>
+
+            <!-- 神祇系統 -->
+            <article class="bg-white rounded-xl shadow-sm border border-stone-200 p-5">
+                <h3 class="text-lg font-bold text-stone-900 mb-2">眾神與法老</h3>
+                <p class="text-sm text-stone-600">
+                    古埃及神祇眾多，阿蒙、拉、荷魯斯、伊西斯等各自掌管不同領域。
+                    法老被視為眾神在人間的代表，因此神殿與陵墓不只是「建築」，
+                    更是一個將權力、信仰與宇宙秩序具體化的舞台。
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Section 4：實用資訊 -->
+    <section id="tips" class="scroll-mt-24 mb-16">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-stone-900 flex items-center">
+                <i class="fa-solid fa-circle-info mr-3 text-indigo-600"></i>實用資訊：阿拉伯數字、氣候與小費
+            </h2>
+            <p class="mt-2 text-stone-600 leading-relaxed">
+                這裡整理幾個抵達當地立刻會用到的重點：數字看得懂、氣候有概念、對小費文化不緊張，
+                旅程就會順暢很多。
+            </p>
+        </div>
+
+        <!-- 阿拉伯數字 -->
+        <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 mb-8">
+            <h3 class="text-lg font-bold text-stone-900 mb-3">
+                <i class="fa-solid fa-7 mr-2 text-emerald-600"></i>看懂阿拉伯–印度數字
+            </h3>
+            <p class="text-sm text-stone-600 mb-4">
+                埃及帳單、收據與許多招牌會使用阿拉伯–印度數字（٠١٢…），和我們習慣的 0–9 長得不同。下表可當作速查表：
+            </p>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm border border-stone-200">
+                    <thead class="bg-stone-100">
+                    <tr>
+                        <th class="px-3 py-2 border border-stone-200">西方數字</th>
+                        <th class="px-3 py-2 border border-stone-200">0</th>
+                        <th class="px-3 py-2 border border-stone-200">1</th>
+                        <th class="px-3 py-2 border border-stone-200">2</th>
+                        <th class="px-3 py-2 border border-stone-200">3</th>
+                        <th class="px-3 py-2 border border-stone-200">4</th>
+                        <th class="px-3 py-2 border border-stone-200">5</th>
+                        <th class="px-3 py-2 border border-stone-200">6</th>
+                        <th class="px-3 py-2 border border-stone-200">7</th>
+                        <th class="px-3 py-2 border border-stone-200">8</th>
+                        <th class="px-3 py-2 border border-stone-200">9</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="text-center">
+                        <td class="px-3 py-2 border border-stone-200 font-medium">阿拉伯–印度數字</td>
+                        <td class="px-3 py-2 border border-stone-200">٠</td>
+                        <td class="px-3 py-2 border border-stone-200">١</td>
+                        <td class="px-3 py-2 border border-stone-200">٢</td>
+                        <td class="px-3 py-2 border border-stone-200">٣</td>
+                        <td class="px-3 py-2 border border-stone-200">٤</td>
+                        <td class="px-3 py-2 border border-stone-200">٥</td>
+                        <td class="px-3 py-2 border border-stone-200">٦</td>
+                        <td class="px-3 py-2 border border-stone-200">٧</td>
+                        <td class="px-3 py-2 border border-stone-200">٨</td>
+                        <td class="px-3 py-2 border border-stone-200">٩</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-stone-500 mt-3">
+                例如：١٥٠ = 150；٢٠٢٥ = 2025。可以把這段截圖貼在手機裡，或直接用這個網頁查。
+            </p>
+        </div>
+
+        <!-- 氣候與小費 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 氣候 -->
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6">
+                <h3 class="text-lg font-bold text-stone-900 mb-3">
+                    <i class="fa-solid fa-temperature-half mr-2 text-orange-500"></i>2–3 月氣候與穿著建議
+                </h3>
+                <ul class="text-sm text-stone-600 space-y-2">
+                    <li>・開羅白天約 20–23°C，夜間約 10–13°C；路克索、亞斯文白天可到 23–26°C，日夜溫差明顯。</li>
+                    <li>・紅海 Hurghada 白天約 21–24°C，海水約 21°C，仍適合浮潛與海邊散步。</li>
+                    <li>・建議白天薄長袖＋長褲，方便防曬與進清真寺；沙漠夜間需加厚外套、帽子與圍巾。</li>
+                    <li>・鞋子以好走的運動鞋為主，再備一雙拖鞋或涼鞋使用於飯店與紅海度假村。</li>
+                </ul>
+            </div>
+
+            <!-- 小費 -->
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6">
+                <h3 class="text-lg font-bold text-stone-900 mb-3">
+                    <i class="fa-solid fa-hand-holding-dollar mr-2 text-emerald-600"></i>Bakshish：埃及的小費文化
+                </h3>
+                <p class="text-sm text-stone-600 mb-3">
+                    在埃及，小費是服務體系的一部分。多準備一些 10、20 EGP 小鈔，會讓整趟旅程順暢許多。
+                </p>
+                <ul class="text-sm text-stone-600 space-y-2">
+                    <li>・餐廳：帳單外再給服務生約 5–10% 小費。</li>
+                    <li>・行李員／房務：每件行李或每天約 10–20 EGP，視服務量與飯店等級調整。</li>
+                    <li>・導遊與司機（團體）：每人每天合計約 50–100 EGP，可參考旅行社建議。</li>
+                    <li>・給小費時保持自然與感謝即可，不必因為語言問題而緊張。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-stone-900 text-stone-400 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="mb-2 text-white text-lg font-bold">TRIPPLANNER</p>
+        <p class="text-sm">日本 12 天質感選物之旅 × 埃及 12 天尼羅河沙漠文化之旅</p>
+        <p class="text-xs mt-6 opacity-60">Generated for personal travel planning.</p>
+    </div>
+</footer>
+
+<script>
+    // ===== 行程資料：可依實際團體行程微調 =====
+    const egyptItinerary = [
+        {
+            day: 1,
+            title: '桃園 ✈ 阿布達比 ✈ 開羅',
+            region: '移動日',
+            desc: '晚班機出發，中停阿布達比後續飛開羅，抵達後辦理入境、入住飯店休息。',
+            focus: ['長程飛行', '適應時差'],
+            note: '建議提前在機上調整睡眠，隨身包準備口罩、薄外套與保濕用品。'
+        },
+        {
+            day: 2,
+            title: '開羅市區與博物館',
+            region: '開羅',
+            desc: '造訪埃及博物館／大埃及博物館、薩拉丁城堡與穆罕默德阿里清真寺等經典景點。',
+            focus: ['古文明文物', '清真寺高地景觀', '舊開羅氛圍'],
+            note: '博物館展品眾多，可先預想最想看的主題（木乃伊、黃金面具、日常器物）。'
+        },
+        {
+            day: 3,
+            title: '開羅 → 紅海度假城 Hurghada',
+            region: '紅海',
+            desc: '驅車前往紅海度假城市，下午在度假村內休息、散步海灘或視情況參加浮潛活動。',
+            focus: ['紅海海景', '飯店設施', '放空充電'],
+            note: '建議背一個小包裝泳具、防曬與拖鞋，行李可放大件在行李箱中。'
+        },
+        {
+            day: 4,
+            title: 'Hurghada → 路克索．尼羅河畔',
+            region: '紅海・路克索',
+            desc: '上午持續享受度假村，下午穿越東部沙漠前往路克索，傍晚可在尼羅河畔散步或欣賞路克索神殿夜景。',
+            focus: ['沙漠公路風景', '尼羅河黃昏'],
+            note: '車程時間較長，可準備耳機、電子書與小點心。'
+        },
+        {
+            day: 5,
+            title: '路克索西岸：帝王谷與女王神殿 → 登上尼羅河遊輪',
+            region: '路克索西岸',
+            desc: '前往西岸參觀帝王谷、哈特謝普蘇女王神殿與曼儂巨像，傍晚登上尼羅河遊輪。',
+            focus: ['法老王陵', '女王神殿', '遊輪 Check-in'],
+            note: '西岸多為戶外區域，建議戴帽子與太陽眼鏡，並準備輕便外套以應對早晚溫差。'
+        },
+        {
+            day: 6,
+            title: '路克索東岸神殿 → 航行至艾德芙、柯孟波',
+            region: '尼羅河遊輪',
+            desc: '參觀卡納克神殿與路克索神殿，之後遊輪經船閘前往艾德芙與柯孟波。',
+            focus: ['巨柱廳', '方尖碑', '遊輪甲板時光'],
+            note: '船上節奏相對悠閒，可安排整理照片、寫日記或在甲板看尼羅河兩岸村落。'
+        },
+        {
+            day: 7,
+            title: '艾德芙荷魯斯神殿・柯孟波雙神殿・抵達亞斯文',
+            region: '尼羅河遊輪',
+            desc: '參觀保存最好的荷魯斯神殿與鱷魚神蘇貝克／荷魯斯雙神殿，傍晚抵達亞斯文。',
+            focus: ['神話故事', '神殿浮雕', '尼羅河黃昏'],
+            note: '可準備幾個想問導遊的神話問題，讓參觀更有重點。'
+        },
+        {
+            day: 8,
+            title: '亞斯文．菲萊神殿・高壩・努比亞文化',
+            region: '亞斯文',
+            desc: '造訪菲萊神殿與亞斯文高壩，搭乘風帆船（Felucca）於尼羅河上欣賞島嶼與努比亞村落。',
+            focus: ['伊西斯女神', '近代工程', '努比亞彩色村'],
+            note: '陽光炙烈，務必加強防曬並補充水分。'
+        },
+        {
+            day: 9,
+            title: '清晨阿布辛貝 → 開羅',
+            region: '阿布辛貝・開羅',
+            desc: '一早前往阿布辛貝大小神殿，欣賞巨型岩壁雕像與神殿空間，午後返回開羅。',
+            focus: ['拉美西斯二世', '世界文化資產搬遷故事'],
+            note: '行程時間早且拉車較久，前一晚務必早睡；可準備枕頭與厚外套應對車上冷氣。'
+        },
+        {
+            day: 10,
+            title: '黑白沙漠探險：拜哈里耶綠洲・黑沙漠・白沙漠',
+            region: '西部沙漠',
+            desc: '驅車前往綠洲後換乘四驅車深入黑沙漠與白沙漠，夜宿營地，感受星空與沙漠寂靜。',
+            focus: ['越野車體驗', '奇岩地形', '星空觀賞'],
+            note: '營地設備較簡單，心理預期放在「冒險體驗」，就會覺得一切都是故事素材。'
+        },
+        {
+            day: 11,
+            title: '白沙漠日出 → 返回開羅．市集採買',
+            region: '沙漠・開羅',
+            desc: '沙漠日出後返回綠洲與開羅，視時間安排香精油店、莎草紙畫工坊與汗哈利利市集。',
+            focus: ['紀念品採買', '最後補貨'],
+            note: '可事先在日本行程網頁整理好「埃及購物清單」，這一天集中處理最有效率。'
+        },
+        {
+            day: 12,
+            title: '開羅 ✈ 阿布達比 ✈ 桃園',
+            region: '返程',
+            desc: '整理行李、前往機場搭機經阿布達比轉機返台，結束 12 天埃及旅程。',
+            focus: ['退房與機場手續', '回國心情整理'],
+            note: '確認隨身行李未放置液體與易碎紀念品，並拍下護照與重要文件備份。'
+        }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderDayButtons();
+        renderDayDetail(0);
+    });
+
+    function renderDayButtons() {
+        const container = document.getElementById('day-selector');
+        egyptItinerary.forEach((d, index) => {
+            con
