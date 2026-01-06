@@ -89,28 +89,31 @@
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
 
-    <!-- Section 1：行程總覽 -->
-    <section id="itinerary" class="scroll-mt-24">
-        <div class="mb-6">
-            <h2 class="text-2xl font-bold text-stone-900 flex items-center">
-                <i class="fa-solid fa-calendar-days mr-3 text-indigo-600"></i>12 天行程總覽
-            </h2>
-            <p class="mt-2 text-stone-600 leading-relaxed">
-                這一段行程以「文化理解 + 節奏穩定」為主軸：前段城市與紅海調時差，中段尼羅河遊輪深入古文明，
-                最後以沙漠與市集收尾。下方卡片為簡要版，可供你在日本行程網頁上做超連結或對照。
-            </p>
-        </div>
+    <!-- Section 1：行程總覽（互動版） -->
+<section id="itinerary" class="scroll-mt-24">
+    <div class="mb-6">
+        <h2 class="text-2xl font-bold text-stone-900 flex items-center">
+            <i class="fa-solid fa-calendar-days mr-3 text-indigo-600"></i>12 天行程總覽
+        </h2>
+        <p class="mt-2 text-stone-600 leading-relaxed">
+            這一段行程以「文化理解＋節奏穩定」為主軸：前段以城市與紅海調整時差，中段搭乘尼羅河遊輪深入古文明，
+            最後以沙漠與市集收尾。下方為互動式行程表，可點選日期查看每天亮點與提醒。
+        </p>
+    </div>
 
-        <!-- Day selector -->
-        <div class="relative mb-6">
-            <div class="flex space-x-3 overflow-x-auto pb-3 hide-scroll" id="day-selector">
-                <!-- 由 JS 產生 -->
-            </div>
+    <!-- Day selector -->
+    <div class="relative mb-6">
+        <div class="flex space-x-3 overflow-x-auto pb-3 hide-scroll" id="egypt-day-selector">
+            <!-- 由 JS 動態產生按鈕 -->
         </div>
+    </div>
 
-        <!-- Day detail -->
-        <div id="day-detail-container"></div>
-    </section>
+    <!-- Day detail -->
+    <div id="egypt-day-detail" class="transition-all duration-300 ease-in-out">
+        <!-- 由 JS 動態填入內容 -->
+    </div>
+</section>
+
 
     <!-- Section 2：經典景點導覽 -->
     <section id="highlights" class="scroll-mt-24">
@@ -368,6 +371,8 @@
 
 <script>
     // ===== 行程資料：可依實際團體行程微調 =====
+    <script>
+    // 埃及 12 天行程資料
     const egyptItinerary = [
         {
             day: 1,
@@ -375,7 +380,7 @@
             region: '移動日',
             desc: '晚班機出發，中停阿布達比後續飛開羅，抵達後辦理入境、入住飯店休息。',
             focus: ['長程飛行', '適應時差'],
-            note: '建議提前在機上調整睡眠，隨身包準備口罩、薄外套與保濕用品。'
+            note: '建議在機上調整睡眠節奏，隨身包準備口罩、薄外套與保濕用品。'
         },
         {
             day: 2,
@@ -383,7 +388,7 @@
             region: '開羅',
             desc: '造訪埃及博物館／大埃及博物館、薩拉丁城堡與穆罕默德阿里清真寺等經典景點。',
             focus: ['古文明文物', '清真寺高地景觀', '舊開羅氛圍'],
-            note: '博物館展品眾多，可先預想最想看的主題（木乃伊、黃金面具、日常器物）。'
+            note: '博物館展品眾多，可先想好最想看的主題（木乃伊、黃金面具、日常器物）。'
         },
         {
             day: 3,
@@ -391,7 +396,7 @@
             region: '紅海',
             desc: '驅車前往紅海度假城市，下午在度假村內休息、散步海灘或視情況參加浮潛活動。',
             focus: ['紅海海景', '飯店設施', '放空充電'],
-            note: '建議背一個小包裝泳具、防曬與拖鞋，行李可放大件在行李箱中。'
+            note: '建議小包裝泳具、防曬與拖鞋，行李大件留在行李箱中即可。'
         },
         {
             day: 4,
@@ -407,7 +412,7 @@
             region: '路克索西岸',
             desc: '前往西岸參觀帝王谷、哈特謝普蘇女王神殿與曼儂巨像，傍晚登上尼羅河遊輪。',
             focus: ['法老王陵', '女王神殿', '遊輪 Check-in'],
-            note: '西岸多為戶外區域，建議戴帽子與太陽眼鏡，並準備輕便外套以應對早晚溫差。'
+            note: '多為戶外區域，建議戴帽子與太陽眼鏡，並準備輕便外套應對早晚溫差。'
         },
         {
             day: 6,
@@ -415,7 +420,7 @@
             region: '尼羅河遊輪',
             desc: '參觀卡納克神殿與路克索神殿，之後遊輪經船閘前往艾德芙與柯孟波。',
             focus: ['巨柱廳', '方尖碑', '遊輪甲板時光'],
-            note: '船上節奏相對悠閒，可安排整理照片、寫日記或在甲板看尼羅河兩岸村落。'
+            note: '船上節奏悠閒，可安排整理照片、寫日記或在甲板看尼羅河兩岸村落。'
         },
         {
             day: 7,
@@ -423,13 +428,13 @@
             region: '尼羅河遊輪',
             desc: '參觀保存最好的荷魯斯神殿與鱷魚神蘇貝克／荷魯斯雙神殿，傍晚抵達亞斯文。',
             focus: ['神話故事', '神殿浮雕', '尼羅河黃昏'],
-            note: '可準備幾個想問導遊的神話問題，讓參觀更有重點。'
+            note: '可先想好想問導遊的神話問題，讓參觀有重點。'
         },
         {
             day: 8,
             title: '亞斯文．菲萊神殿・高壩・努比亞文化',
             region: '亞斯文',
-            desc: '造訪菲萊神殿與亞斯文高壩，搭乘風帆船（Felucca）於尼羅河上欣賞島嶼與努比亞村落。',
+            desc: '造訪菲萊神殿與亞斯文高壩，搭乘風帆船於尼羅河上欣賞島嶼與努比亞村落。',
             focus: ['伊西斯女神', '近代工程', '努比亞彩色村'],
             note: '陽光炙烈，務必加強防曬並補充水分。'
         },
@@ -437,17 +442,17 @@
             day: 9,
             title: '清晨阿布辛貝 → 開羅',
             region: '阿布辛貝・開羅',
-            desc: '一早前往阿布辛貝大小神殿，欣賞巨型岩壁雕像與神殿空間，午後返回開羅。',
+            desc: '一早前往阿布辛貝大小神殿，欣賞巨型岩壁雕像與神殿空間，下午或傍晚飛返開羅。',
             focus: ['拉美西斯二世', '世界文化資產搬遷故事'],
-            note: '行程時間早且拉車較久，前一晚務必早睡；可準備枕頭與厚外套應對車上冷氣。'
+            note: '行程早且拉車久，前一晚務必早睡；準備頸枕與外套應對車上冷氣。'
         },
         {
             day: 10,
-            title: '黑白沙漠探險：拜哈里耶綠洲・黑沙漠・白沙漠',
+            title: '黑白沙漠探險：綠洲・黑沙漠・白沙漠',
             region: '西部沙漠',
             desc: '驅車前往綠洲後換乘四驅車深入黑沙漠與白沙漠，夜宿營地，感受星空與沙漠寂靜。',
             focus: ['越野車體驗', '奇岩地形', '星空觀賞'],
-            note: '營地設備較簡單，心理預期放在「冒險體驗」，就會覺得一切都是故事素材。'
+            note: '營地設備較簡單，心理預期放在「冒險體驗」，會比較享受。'
         },
         {
             day: 11,
@@ -455,7 +460,7 @@
             region: '沙漠・開羅',
             desc: '沙漠日出後返回綠洲與開羅，視時間安排香精油店、莎草紙畫工坊與汗哈利利市集。',
             focus: ['紀念品採買', '最後補貨'],
-            note: '可事先在日本行程網頁整理好「埃及購物清單」，這一天集中處理最有效率。'
+            note: '可事先列好「埃及購物清單」，這一天集中處理最有效率。'
         },
         {
             day: 12,
@@ -466,6 +471,86 @@
             note: '確認隨身行李未放置液體與易碎紀念品，並拍下護照與重要文件備份。'
         }
     ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderEgyptDayButtons();
+        renderEgyptDayDetail(0);
+    });
+
+    function renderEgyptDayButtons() {
+        const container = document.getElementById('egypt-day-selector');
+        if (!container) return;
+        egyptItinerary.forEach((d, index) => {
+            const btn = document.createElement('button');
+            btn.className =
+                'egypt-day-btn flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium border bg-white text-stone-600 border-stone-200 hover:border-indigo-300';
+            btn.innerHTML = `D${d.day}<br><span class="text-xs opacity-80">${d.region}</span>`;
+            btn.onclick = () => {
+                updateEgyptDayActiveState(index);
+                renderEgyptDayDetail(index);
+            };
+            container.appendChild(btn);
+        });
+        updateEgyptDayActiveState(0);
+    }
+
+    function updateEgyptDayActiveState(activeIndex) {
+        const btns = document.querySelectorAll('.egypt-day-btn');
+        btns.forEach((btn, index) => {
+            if (index === activeIndex) {
+                btn.className =
+                    'egypt-day-btn flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium border bg-indigo-600 text-white border-indigo-600 shadow-md transform scale-105';
+            } else {
+                btn.className =
+                    'egypt-day-btn flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium border bg-white text-stone-600 border-stone-200 hover:border-indigo-300';
+            }
+        });
+    }
+
+    function renderEgyptDayDetail(index) {
+        const data = egyptItinerary[index];
+        const container = document.getElementById('egypt-day-detail');
+        if (!data || !container) return;
+
+        container.innerHTML = `
+            <div class="bg-white rounded-xl shadow-md border border-stone-200 overflow-hidden">
+                <div class="bg-indigo-50 px-6 py-4 border-b border-indigo-100 flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-indigo-900">Day ${data.day}：${data.title}</h3>
+                    <span class="text-sm font-medium bg-white px-3 py-1 rounded-full text-indigo-600 shadow-sm border border-indigo-100">
+                        ${data.region}
+                    </span>
+                </div>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-stone-600 mb-4 leading-relaxed">${data.desc}</p>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-stone-800 text-sm uppercase tracking-wide border-b border-stone-100 pb-1">今日重點</h4>
+                            <ul class="space-y-2">
+                                ${data.focus.map(f => `
+                                    <li class="flex items-center text-stone-700">
+                                        <i class="fa-solid fa-check text-emerald-500 mr-2 text-sm"></i>${f}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 rounded-lg p-4 border border-amber-100">
+                            <h4 class="font-bold text-amber-800 text-sm mb-2">
+                                <i class="fa-solid fa-lightbulb mr-2"></i>貼心提醒
+                            </h4>
+                            <p class="text-stone-700 text-sm">${data.note}</p>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-stone-500 pt-2">
+                            <span>日記提示：可以在這一天寫下「今天最像課本裡哪一段歷史？」。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+</script>
+
 
     document.addEventListener('DOMContentLoaded', () => {
         renderDayButtons();
