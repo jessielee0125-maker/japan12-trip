@@ -12,19 +12,272 @@
     ];
 
     const itineraryData = [
-        { day: 1, loc: '東京', title: '抵達東京', desc: '入住新宿，適應環境', highlights: ['新宿散策', '便利商店美食'], food: 'AFURI 柚子鹽拉麵', hotel: '新宿 JR East Hotel Mets', logistics: '成田N\'EX直達新宿', intensity: 2 },
-        { day: 2, loc: '東京', title: '雙亮點：哈利波特與夜景', desc: '上午沉浸魔法世界，晚上俯瞰東京', highlights: ['東京哈利波特影城', '豪德寺(招財貓)', 'Shibuya Sky'], food: '敘敘苑燒肉', hotel: '續住新宿', logistics: '地鐵移動', intensity: 5 },
-        { day: 3, loc: '富士', title: '前往富士山', desc: '搭乘特急前往河口湖，享受溫泉', highlights: ['富士回遊特急', '大石公園', '河口湖冬花火'], food: '不動茶屋餺飥麵', hotel: '湖山亭產屋 或 風之露台', logistics: '🔥 行李寄往名古屋', intensity: 3 },
-        { day: 4, loc: '富士', title: '富士野生動物園', desc: '與富士山同框餵食獅子', highlights: ['Fuji Safari Park', '叢林巴士'], food: '旅館懷石料理', hotel: '續住溫泉旅館', logistics: '租車或包車', intensity: 3 },
-        { day: 5, loc: '名古屋', title: '移動日與神宮', desc: '前往名古屋，中途休息', highlights: ['熱田神宮', '名古屋電視塔夜景'], food: '蓬萊軒鰻魚三吃', hotel: '名古屋萬豪酒店', logistics: '新幹線 (三島➔名古屋)', intensity: 3 },
-        { day: 6, loc: '名古屋', title: '陶瓷工藝與寶可夢', desc: '感受名古屋的職人文化', highlights: ['則武之森', '名古屋寶可夢中心'], food: '矢場味噌炸豬排', hotel: '續住名古屋', logistics: '地鐵', intensity: 2 },
-        { day: 7, loc: '京都', title: '嵐山風情', desc: '感受古都寧靜', highlights: ['嵐山渡月橋', '竹林小徑', '溫泉體驗'], food: '% Arabica 咖啡', hotel: '嵐山 花傳抄', logistics: '🔥 行李寄往京都飯店', intensity: 3 },
-        { day: 8, loc: '奈良', title: '奈良療癒之旅', desc: '餵鹿與深山古寺', highlights: ['奈良公園', '二月堂', '鴨川散步'], food: '志津香釜飯', hotel: 'Cross Hotel Kyoto', logistics: '近鐵特急', intensity: 4 },
-        { day: 9, loc: '大阪', title: '老屋選物', desc: '探索中崎町文創區', highlights: ['中崎町老屋選物', '梅田'], food: '串炸', hotel: '大阪格蘭比亞酒店', logistics: '阪急電鐵', intensity: 3 },
-        { day: 10, loc: '大阪', title: '環球影城 USJ', desc: '全日夢幻樂園', highlights: ['瑪利歐賽車', '哈利波特禁忌之旅', '咚奇剛'], food: '千房大阪燒', hotel: '續住大阪', logistics: 'JR環狀線', intensity: 5 },
-        { day: 11, loc: '大阪', title: '終極採購日', desc: '橘子街與梅田掃貨', highlights: ['橘子街', 'Muji/Unico', 'Standard Products'], food: '國產牛燒肉吃到飽', hotel: '續住大阪', logistics: '地鐵', intensity: 4 },
-        { day: 12, loc: '機場', title: '返程', desc: '最後衝刺與回國', highlights: ['臨空城 Outlet', '關西機場'], food: '神座拉麵', hotel: '溫暖的家', logistics: '南海電鐵 Rapi:t', intensity: 3 }
-    ];
+    {
+        day: 1,
+        loc: '東京',
+        title: '抵達東京',
+        desc: '入住新宿，適應環境',
+        highlights: [
+            {
+                label: '新宿散策',
+                map: 'https://www.google.com/maps/search/?api=1&query=Shinjuku+Station+Tokyo'
+            },
+            {
+                label: '便利商店美食',
+                map: 'https://www.google.com/maps/search/?api=1&query=Convenience+Store+Shinjuku+Tokyo'
+            }
+        ],
+        food: 'AFURI 柚子鹽拉麵',
+        hotel: '新宿 JR East Hotel Mets',
+        logistics: '成田N\'EX直達新宿',
+        intensity: 2
+    },
+    {
+        day: 2,
+        loc: '東京',
+        title: '雙亮點：哈利波特與夜景',
+        desc: '上午沉浸魔法世界，晚上俯瞰東京',
+        highlights: [
+            {
+                label: '東京哈利波特影城',
+                map: 'https://www.google.com/maps/search/?api=1&query=Warner+Bros+Studio+Tour+Tokyo'
+            },
+            {
+                label: '豪德寺（招財貓）',
+                map: 'https://www.google.com/maps/search/?api=1&query=Gotokuji+Temple+Tokyo'
+            },
+            {
+                label: 'Shibuya Sky',
+                map: 'https://www.google.com/maps/search/?api=1&query=Shibuya+Sky+Tokyo'
+            }
+        ],
+        food: '敘敘苑燒肉',
+        hotel: '續住新宿',
+        logistics: '地鐵移動',
+        intensity: 5
+    },
+    {
+        day: 3,
+        loc: '富士',
+        title: '前往富士山',
+        desc: '搭乘特急前往河口湖，享受溫泉',
+        highlights: [
+            {
+                label: '富士回遊特急（河口湖站）',
+                map: 'https://www.google.com/maps/search/?api=1&query=Kawaguchiko+Station'
+            },
+            {
+                label: '大石公園',
+                map: 'https://www.google.com/maps/search/?api=1&query=Oishi+Park+Kawaguchiko'
+            },
+            {
+                label: '河口湖冬花火（河口湖畔）',
+                map: 'https://www.google.com/maps/search/?api=1&query=Lake+Kawaguchi'
+            }
+        ],
+        food: '不動茶屋餺飥麵',
+        hotel: '湖山亭產屋 或 風之露台',
+        logistics: '🔥 行李寄往名古屋',
+        intensity: 3
+    },
+    {
+        day: 4,
+        loc: '富士',
+        title: '富士野生動物園',
+        desc: '與富士山同框餵食獅子',
+        highlights: [
+            {
+                label: 'Fuji Safari Park',
+                map: 'https://www.google.com/maps/search/?api=1&query=Fuji+Safari+Park'
+            },
+            {
+                label: '叢林巴士餵食體驗',
+                map: 'https://www.google.com/maps/search/?api=1&query=Fuji+Safari+Park+Jungle+Bus'
+            }
+        ],
+        food: '旅館懷石料理',
+        hotel: '續住溫泉旅館',
+        logistics: '租車或包車',
+        intensity: 3
+    },
+    {
+        day: 5,
+        loc: '名古屋',
+        title: '移動日與神宮',
+        desc: '前往名古屋，中途休息',
+        highlights: [
+            {
+                label: '熱田神宮',
+                map: 'https://www.google.com/maps/search/?api=1&query=Atsuta+Jingu+Nagoya'
+            },
+            {
+                label: '名古屋電視塔夜景',
+                map: 'https://www.google.com/maps/search/?api=1&query=Nagoya+TV+Tower'
+            }
+        ],
+        food: '蓬萊軒鰻魚三吃',
+        hotel: '名古屋萬豪酒店',
+        logistics: '新幹線（三島 ➜ 名古屋）',
+        intensity: 3
+    },
+    {
+        day: 6,
+        loc: '名古屋',
+        title: '陶瓷工藝與寶可夢',
+        desc: '感受名古屋的職人文化',
+        highlights: [
+            {
+                label: '則武之森（Noritake Garden）',
+                map: 'https://www.google.com/maps/search/?api=1&query=Noritake+Garden+Nagoya'
+            },
+            {
+                label: '名古屋寶可夢中心',
+                map: 'https://www.google.com/maps/search/?api=1&query=Pokemon+Center+Nagoya'
+            }
+        ],
+        food: '矢場味噌炸豬排',
+        hotel: '續住名古屋',
+        logistics: '地鐵',
+        intensity: 2
+    },
+    {
+        day: 7,
+        loc: '京都',
+        title: '嵐山風情',
+        desc: '感受古都寧靜',
+        highlights: [
+            {
+                label: '嵐山渡月橋',
+                map: 'https://www.google.com/maps/search/?api=1&query=Togetsukyo+Bridge+Kyoto'
+            },
+            {
+                label: '嵐山竹林小徑',
+                map: 'https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove+Kyoto'
+            },
+            {
+                label: '溫泉體驗（嵐山溫泉一帶）',
+                map: 'https://www.google.com/maps/search/?api=1&query=Arashiyama+Onsen'
+            }
+        ],
+        food: '% Arabica 咖啡',
+        hotel: '嵐山 花傳抄',
+        logistics: '🔥 行李寄往京都飯店',
+        intensity: 3
+    },
+    {
+        day: 8,
+        loc: '奈良',
+        title: '奈良療癒之旅',
+        desc: '餵鹿與深山古寺',
+        highlights: [
+            {
+                label: '奈良公園',
+                map: 'https://www.google.com/maps/search/?api=1&query=Nara+Park'
+            },
+            {
+                label: '二月堂',
+                map: 'https://www.google.com/maps/search/?api=1&query=Nigatsudo+Nara'
+            },
+            {
+                label: '鴨川散步（回到京都）',
+                map: 'https://www.google.com/maps/search/?api=1&query=Kamogawa+Kyoto'
+            }
+        ],
+        food: '志津香釜飯',
+        hotel: 'Cross Hotel Kyoto',
+        logistics: '近鐵特急',
+        intensity: 4
+    },
+    {
+        day: 9,
+        loc: '大阪',
+        title: '老屋選物',
+        desc: '探索中崎町文創區',
+        highlights: [
+            {
+                label: '中崎町老屋選物街區',
+                map: 'https://www.google.com/maps/search/?api=1&query=Nakazakicho+Osaka'
+            },
+            {
+                label: '梅田一帶散策',
+                map: 'https://www.google.com/maps/search/?api=1&query=Umeda+Osaka'
+            }
+        ],
+        food: '串炸',
+        hotel: '大阪格蘭比亞酒店',
+        logistics: '阪急電鐵',
+        intensity: 3
+    },
+    {
+        day: 10,
+        loc: '大阪',
+        title: '環球影城 USJ',
+        desc: '全日夢幻樂園',
+        highlights: [
+            {
+                label: 'Universal Studios Japan（USJ）',
+                map: 'https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan'
+            },
+            {
+                label: '瑪利歐賽車 & 超級任天堂世界',
+                map: 'https://www.google.com/maps/search/?api=1&query=Super+Nintendo+World+USJ'
+            },
+            {
+                label: '哈利波特禁忌之旅',
+                map: 'https://www.google.com/maps/search/?api=1&query=The+Wizarding+World+of+Harry+Potter+USJ'
+            }
+        ],
+        food: '千房大阪燒',
+        hotel: '續住大阪',
+        logistics: 'JR 環狀線',
+        intensity: 5
+    },
+    {
+        day: 11,
+        loc: '大阪',
+        title: '終極採購日',
+        desc: '橘子街與梅田掃貨',
+        highlights: [
+            {
+                label: '橘子街（Orange Street）',
+                map: 'https://www.google.com/maps/search/?api=1&query=Orange+Street+Osaka'
+            },
+            {
+                label: '梅田 Muji / Unico 一帶',
+                map: 'https://www.google.com/maps/search/?api=1&query=MUJI+Grand+Front+Osaka'
+            },
+            {
+                label: 'Standard Products（梅田周邊）',
+                map: 'https://www.google.com/maps/search/?api=1&query=Standard+Products+Osaka'
+            }
+        ],
+        food: '國產牛燒肉吃到飽',
+        hotel: '續住大阪',
+        logistics: '地鐵',
+        intensity: 4
+    },
+    {
+        day: 12,
+        loc: '機場',
+        title: '返程',
+        desc: '最後衝刺與回國',
+        highlights: [
+            {
+                label: '臨空城 Outlet',
+                map: 'https://www.google.com/maps/search/?api=1&query=Rinku+Premium+Outlets'
+            },
+            {
+                label: '關西國際機場',
+                map: 'https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport'
+            }
+        ],
+        food: '神座拉麵',
+        hotel: '溫暖的家',
+        logistics: '南海電鐵 Rapi:t',
+        intensity: 3
+    }
+];
+
 
     const shopData = [
         { name: 'MUJI 銀座旗艦店', city: 'Tokyo', type: 'Home', tag: '居家', desc: '世界最大，含刺繡工坊' },
@@ -344,3 +597,4 @@
     }
 </script>
  </body> </html>
+
