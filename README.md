@@ -1,0 +1,1 @@
+# japan12-trip
